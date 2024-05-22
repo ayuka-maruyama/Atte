@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="{{ asset('css/destyle.css') }}">
     <link rel="stylesheet" href="{{ asset('css/common.css') }}">
     @yield('css')
-    <title>Document</title>
+    <title>Atte</title>
 </head>
 <body>
 
