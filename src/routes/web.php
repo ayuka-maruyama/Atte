@@ -13,4 +13,4 @@ use App\Http\Controllers\RegisteredUserController;
 |
 */
 
-Route::get('/', [RegisteredUserController::class, 'index']);
+Route::get('/', [RegisteredUserController::class, 'create']);
