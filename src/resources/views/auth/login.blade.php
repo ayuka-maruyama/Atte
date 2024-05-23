@@ -6,7 +6,7 @@
 
 @section('content')
     <div class="login">
-        <h2 class="login__ttl">会員登録</h2>
+        <h2 class="login__ttl">ログイン</h2>
         <div class="login__form">
             <form class="form-area" action="/login" method="post">
             @csrf
@@ -27,8 +27,8 @@
                 </div>
             </form>
             <div class="login__txt">
-                <p class="login__txt-p">アカウントをお持ちの方はこちらから</p>
-                <a class="login__txt-link" href="/">ログイン</a>
+                <p class="login__txt-p">アカウントをお持ちでない方はこちらから</p>
+                <a class="login__txt-link" href="/register">会員登録</a>
             </div>
         </div>
     </div>
