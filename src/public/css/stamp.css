@@ -1,0 +1,46 @@
+.header__nav {
+    padding: 10px 40px;
+    width: 30vw;
+}
+
+.header__nav-ul {
+    display: flex;
+    font-size: 16px;
+    font-weight: bold;
+    justify-content: space-between;
+}
+
+.content__area {
+    width: 70vw;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.content_message {
+    font-size: 25px;
+    padding: 40px;
+    font-weight: 400;
+}
+
+.stamp__area {
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.stamp__area-top ,
+.stamp__area-bottom {
+    display: flex;
+    padding: 40px;
+    justify-content: space-around;
+}
+
+.start__button ,
+.end__button,
+.break_start__button,
+.break_end__button {
+    border: 1px solid #FFFFFF;
+    border-radius: 5px;
+    background: #FFFFFF;
+    width: 25vw;
+    height: 20vh;
+}
