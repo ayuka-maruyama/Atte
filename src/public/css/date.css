@@ -1,0 +1,36 @@
+.date {
+    width: 90vw;
+    margin: 0 auto;
+}
+
+.date__title {
+    font-size: 22px;
+    text-align: center;
+    padding: 30px 0 40px;
+}
+
+.work-time {
+    border-top: 1px solid #b0afaf;
+}
+
+.work-time__table {
+    width: 100%;
+}
+
+.table__row {
+    height: 10vh;
+    border-bottom: 1px solid #b0afaf;
+margin: 15px;
+}
+
+.table__row:last-child {
+    border: none;
+}
+
+.work-time__title,
+.work-time__item {
+    padding: 25px;
+    vertical-align: middle;
+    font-weight: 600;
+}
+
