@@ -10,6 +10,18 @@
     align-items: center;
 }
 
+.header__nav {
+    padding: 10px 40px;
+    width: 30vw;
+}
+
+.header__nav-ul {
+    display: flex;
+    font-size: 16px;
+    font-weight: bold;
+    justify-content: space-between;
+}
+
 .header_ttl {
     font-size: 25px;
     font-weight: bold;
