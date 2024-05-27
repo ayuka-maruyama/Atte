@@ -10,29 +10,37 @@
         <div class="register__form">
             <form class="form-area" action="/register" method="post">
             @csrf
-                <input class="form-area__input" type="text" name="name" id="name" value="{{ old('name') }}" placeholder="名前">
-                <div class="error">
-                    @error('name')
-                    {{ message('name') }}
-                    @enderror
+                <div class="form-area__name">
+                    <input class="form-area__input" type="text" name="name" id="name" value="{{ old('name') }}" placeholder="名前">
+                    <div class="error">
+                        @error('name')
+                        {{ $message }}
+                        @enderror
+                    </div>
                 </div>
-                <input class="form-area__input" type="mail" name="email" id="email" value="{{ old('email') }}" placeholder="メールアドレス">
-                <div class="error">
-                    @error('email')
-                    {{ message('email') }}
-                    @enderror
+                <div class="form-area__email">
+                    <input class="form-area__input" type="mail" name="email" id="email" value="{{ old('email') }}" placeholder="メールアドレス">
+                    <div class="error">
+                        @error('email')
+                        {{ $message }}
+                        @enderror
+                    </div>
                 </div>
-                <input class="form-area__input" type="password" name="password" id="password" value="{{ old('password') }}" placeholder="パスワード">
-                <div class="error">
-                    @error('password')
-                    {{ message('password') }}
-                    @enderror
+                <div class="form-area__password">                
+                    <input class="form-area__input" type="password" name="password" id="password" value="{{ old('password') }}" placeholder="パスワード">
+                    <div class="error">
+                        @error('password')
+                        {{ $message }}
+                        @enderror
+                    </div>
                 </div>
-                <input class="form-area__input" type="password" name="password_confirmation" id="password_confirmation" value="{{ old('password_confirmation') }}" placeholder="確認用パスワード">
-                <div class="error">
-                    @error('password_confirmation')
-                    {{ message('password_confirmation') }}
-                    @enderror
+                <div class="form-area__password">
+                    <input class="form-area__input" type="password" name="password_confirmation" id="password_confirmation" value="{{ old('password_confirmation') }}" placeholder="確認用パスワード">
+                    <div class="error">
+                        @error('password_confirmation')
+                        {{ $message }}
+                        @enderror
+                    </div>
                 </div>
                 <div class="form-area__button">
                     <button class="form-area__button-submit" type="submit">会員登録</button>
