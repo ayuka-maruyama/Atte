@@ -19,7 +19,7 @@
                     </div>
                 </div>
                 <div class="form-area__email">
-                    <input class="form-area__input" type="mail" name="email" id="email" value="{{ old('email') }}" placeholder="メールアドレス">
+                    <input class="form-area__input" type="email" name="email" id="email" value="{{ old('email') }}" placeholder="メールアドレス">
                     <div class="error">
                         @error('email')
                         {{ $message }}
