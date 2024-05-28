@@ -42,9 +42,9 @@
                         @enderror
                     </div>
                 </div>
-                <div class="form-area__button">
-                    <button class="form-area__button-submit" type="submit">会員登録</button>
-                </div>
+                <button class="form-area__button" type="submit">
+                    <div class="form-area__button-submit">会員登録</div>
+                </button>
             </form>
             <div class="register__txt">
                 <p class="register__txt-p">アカウントをお持ちの方はこちらから</p>
