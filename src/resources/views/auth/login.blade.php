@@ -10,21 +10,25 @@
         <div class="login__form">
             <form class="form-area" action="/login" method="post">
             @csrf
-                <input class="form-area__input" type="mail" name="email" id="email" value="{{ old('email') }}" placeholder="メールアドレス">
-                <div class="error">
-                    @error('email')
-                    {{ message('email') }}
-                    @enderror
+                <div class="form-area__email">
+                    <input class="form-area__input" type="email" name="email" id="email" value="{{ old('email') }}" placeholder="メールアドレス">
+                    <div class="error">
+                        @error('email')
+                        {{ $message }}
+                        @enderror
+                    </div>
                 </div>
-                <input class="form-area__input" type="password" name="password" id="password" value="{{ old('password') }}" placeholder="パスワード">
-                <div class="error">
-                    @error('password')
-                    {{ message('password') }}
-                    @enderror
+                <div class="form-area__password">                
+                    <input class="form-area__input" type="password" name="password" id="password" value="{{ old('password') }}" placeholder="パスワード">
+                    <div class="error">
+                        @error('password')
+                        {{ $message }}
+                        @enderror
+                    </div>
                 </div>
-                <div class="form-area__button">
-                    <button class="form-area__button-submit" type="submit">ログイン</button>
-                </div>
+                <button class="form-area__button" type="submit">
+                    <div class="form-area__button-submit">ログイン</div>
+                </button>
             </form>
             <div class="login__txt">
                 <p class="login__txt-p">アカウントをお持ちでない方はこちらから</p>
