@@ -26,7 +26,7 @@
 @section('content')
     <div class="content__area">
         <h2 class="content_message">
-            <!-- ログインした人の名前を表示 さんお疲れ様です！ -->●●さんお疲れ様です！
+            <?php $user = Auth::user(); ?>{{ $user->name }} さんお疲れ様です！
         </h2>
         <div class="stamp__area">
             <form class="stamp__form" action="" method="post">
