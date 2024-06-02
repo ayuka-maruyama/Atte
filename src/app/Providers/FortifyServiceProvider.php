@@ -3,15 +3,10 @@
 namespace App\Providers;
 
 use App\Actions\Fortify\CreateNewUser;
-use App\Actions\Fortify\ResetUserPassword;
-use App\Actions\Fortify\UpdateUserPassword;
-use App\Actions\Fortify\UpdateUserProfileInformation;
-use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\ServiceProvider;
-use Illuminate\Support\Str;
 use Laravel\Fortify\Fortify;
+use Illuminate\Support\Facades\Auth;
 
 class FortifyServiceProvider extends ServiceProvider
 {
@@ -38,11 +33,14 @@ class FortifyServiceProvider extends ServiceProvider
             return view('auth.login');
         });
 
-        RateLimiter::for('login', function (Request $request) {
-            $email = (string) $request->email;
+        Fortify::authenticateUsing(function (Request $request) {
+            $credentials = $request->only('email', 'password');
 
-            return Limit::perMinute(10)->by($email . $request->ip());
+            if (Auth::attempt($credentials)) {
+                return Auth::user();
+            }
+
+            return null;
         });
-
     }
 }
