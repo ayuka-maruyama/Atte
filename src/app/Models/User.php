@@ -33,4 +33,12 @@ class User extends Authenticatable
         'remember_token',
     ];
 
+    /**
+     *  work_time関連付け
+     *  1対多
+     */
+    public function work_time()
+    {
+        return $this->hasMany(Work_time::class);
+    }
 }
