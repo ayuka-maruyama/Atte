@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\RegisteredUserController;
 use App\Http\Controllers\AuthenticatedSessionController;
+use App\Http\Controllers\WorktimeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -31,4 +32,5 @@ Route::middleware('auth')->group(function () {
     Route::get('/', function () {
         return view('stamp');
     })->name('home');
+    Route::post('/starttime', [WorktimeController::class, 'store'])->name('starttime');
 });
