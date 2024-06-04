@@ -17,8 +17,15 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/register', [RegisteredUserController::class, 'create']);
 Route::post('/register', [RegisteredUserController::class, 'store']);
-Route::get('/login', [AuthenticatedSessionController::class, 'store']);
-Route::post('/login', [AuthenticatedSessionController::class, 'destroy']);
+
+// GETメソッドでログイン画面を表示
+Route::get('/login', function () {
+    return view('auth.login'); // ログインビューを表示
+});
+
+// POSTメソッドでログイン処理を実行
+Route::post('/login', [AuthenticatedSessionController::class, 'store']);
+Route::post('/logout', [AuthenticatedSessionController::class, 'destroy']);
 
 Route::middleware('auth')->group(function () {
     Route::get('/', function () {

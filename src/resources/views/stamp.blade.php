@@ -25,21 +25,39 @@
 
 @section('content')
 <div class="content__area">
-    <h2 class="content_message">
-        <?php $user = Auth::user(); ?>{{ $user->name }} さんお疲れ様です！
-    </h2>
+    <div class="content__area-message">
+        <h2 class="content_message">
+            <?php $user = Auth::user(); ?>{{ $user->name }} さんお疲れ様です！
+        </h2>
+
+        <!-- フラッシュメッセージ -->
+        @if(session('flash_message'))
+        <div class="flash_message">
+            {{ session('flash_message') }}
+        </div>
+        @endif
+    </div>
     <div class="stamp__area">
-        <form class="stamp__form" action="" method="post">
-            @csrf
-            <div class="stamp__area-top">
+        <div class="stamp__area-top">
+            <form class="stamp__form" action="{{ route('starttime') }}" method="post">
+                @csrf
                 <button class="start__button" type="submit">勤務開始</button>
+            </form>
+            <form class="stamp__form" action="" method="post">
+                @csrf
                 <button class="end__button" type="submit">勤務終了</button>
-            </div>
-            <div class="stamp__area-bottom">
+            </form>
+        </div>
+        <div class="stamp__area-bottom">
+            <form class="stamp__form" action="" method="post">
+                @csrf
                 <button class="break_start__button" type="submit">休憩開始</button>
+            </form>
+            <form class="stamp__form" action="" method="post">
+                @csrf
                 <button class="break_end__button" type="submit">休憩終了</button>
-            </div>
-        </form>
+            </form>
+        </div>
     </div>
 </div>
 @endsection
