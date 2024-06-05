@@ -30,7 +30,7 @@
             <?php $user = Auth::user(); ?>{{ $user->name }} さんお疲れ様です！
         </h2>
 
-        <!-- フラッシュメッセージ -->
+        <!-- フラッシュメッセージ。ボタン反転実装されたら削除する -->
         @if(session('flash_message'))
         <div class="flash_message">
             {{ session('flash_message') }}
@@ -41,7 +41,9 @@
         <div class="stamp__area-top">
             <form class="stamp__form" action="{{ route('starttime') }}" method="post">
                 @csrf
-                <button class="start__button" type="submit">勤務開始</button>
+                <button type="submit" class="start__button button @if ($todayWorkStart ?? '') disabled @endif" @if ($todayWorkStart ?? '' ) disabled @endif>
+                    勤務開始
+                </button>
             </form>
             <form class="stamp__form" action="" method="post">
                 @csrf
@@ -55,7 +57,8 @@
             </form>
             <form class="stamp__form" action="" method="post">
                 @csrf
-                <button class="break_end__button" type="submit">休憩終了</button>
+                <button type="submit" class="break-end__button button @if ($todayWorkStart ?? '' ) disabled @endif" @if ($todayWorkStart ?? '' ) disabled @endif>休憩終了</button>
+            </form>
             </form>
         </div>
     </div>

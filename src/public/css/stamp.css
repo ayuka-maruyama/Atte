@@ -35,11 +35,18 @@
 .start__button ,
 .end__button,
 .break_start__button,
-.break_end__button {
+.break-end__button {
     border: 1px solid #FFFFFF;
     border-radius: 5px;
     background: #FFFFFF;
     width: 25vw;
     height: 22vh;
     padding: 20px;
+}
+
+/* 出勤ボタンが押されたときの制御 */
+.start__button.disabled,
+.break-end__button.disabled {
+    color: #c7c5c5;
+    cursor: not-allowed;
 }

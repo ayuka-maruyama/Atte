@@ -32,5 +32,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/', function () {
         return view('stamp');
     })->name('home');
-    Route::post('/starttime', [WorktimeController::class, 'store'])->name('starttime');
+    Route::get('/', [WorktimeController::class, 'todayWorkStart'])->name('todayWorkStart');
+    Route::post('/', [WorktimeController::class, 'store'])->name('starttime');
 });

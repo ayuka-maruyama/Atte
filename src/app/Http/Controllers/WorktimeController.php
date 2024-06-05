@@ -9,35 +9,37 @@ use App\Models\Work_time;
 
 class WorktimeController extends Controller
 {
-    public function store(Request $request)
+    public function todayWorkStart()
     {
-        // 認証情報の確認
         $user = Auth::user();
 
-        // DBへの打刻は1日1回まで
-        $oldTimestamp = Work_time::where('user_id', $user->id)->latest()->first();
-        if ($oldTimestamp) {
-            $oldStartTime = new Carbon($oldTimestamp->start_time);
-            $oldDate = $oldStartTime->startOfDay();
-        } else {
-            $oldDate = null; // 初期化
-        }
+        $todayWorkStart = Work_time::where('user_id', $user->id)
+            ->whereDate('start_time', Carbon::today())
+            ->exists();
 
-        $newDate = Carbon::today()->startOfDay();
+        return view('stamp', compact('todayWorkStart'));
+    }
 
-        // DBの日付と今回の打刻時間の日付を比較する
-        // 同日付の出勤打刻で、かつ直前のend_time（退勤打刻）がされていない場合はエラーを出す
-        if ($oldDate && ($oldDate == $newDate) && empty($oldTimestamp->end_time)) {
-            return redirect()->back()->with('flash_message', 'すでに出勤打刻がされています');
+    public function store(Request $request)
+    {
+        $user = Auth::user();
+
+        // 今日の出勤状態を確認
+        $todayWorkStart = Work_time::where('user_id', $user->id)
+            ->whereDate('start_time', Carbon::today())
+            ->exists();
+
+        if ($todayWorkStart) {
+            return redirect()->route('starttime');
         }
 
         // 新しい出勤打刻を作成
         Work_time::create([
             'user_id' => $user->id,
-            'date' => $newDate,
+            'date' => Carbon::today(),
             'start_time' => Carbon::now(),
         ]);
 
-        return redirect()->back()->with('flash_message', '勤務開始しました');
+        return redirect()->route('todayWorkStart');
     }
 }
