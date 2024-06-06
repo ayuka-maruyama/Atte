@@ -30,5 +30,5 @@ Route::post('/logout', [AuthenticatedSessionController::class, 'destroy']);
 
 Route::middleware('auth')->group(function () {
     Route::get('/', [WorktimeController::class, 'todayWorkStart'])->name('todayWorkStart');
-    Route::post('/', [WorktimeController::class, 'store'])->name('starttime');
+    Route::post('/', [WorktimeController::class, 'startWork'])->name('starttime');
 });

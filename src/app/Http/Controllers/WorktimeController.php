@@ -20,7 +20,7 @@ class WorktimeController extends Controller
         return view('stamp', compact('todayWorkStart'));
     }
 
-    public function store(Request $request)
+    public function startWork(Request $request)
     {
         $user = Auth::user();
 
