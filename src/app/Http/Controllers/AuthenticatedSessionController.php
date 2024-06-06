@@ -25,7 +25,7 @@ class AuthenticatedSessionController extends Controller
 
         // 認証失敗時の処理
         return back()->withErrors([
-            'email' => 'The provided credentials do not match our records.',
+            'email' => 'メールアドレスまたはパスワードが正しくありません。',
         ]);
     }
 

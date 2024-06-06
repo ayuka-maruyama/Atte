@@ -30,7 +30,7 @@ class WorktimeController extends Controller
             ->exists();
 
         if ($todayWorkStart) {
-            return redirect()->route('starttime');
+            return redirect()->route('starttime')->with('flash_message', 'すでに出勤処理済みです');
         }
 
         // 新しい出勤打刻を作成
