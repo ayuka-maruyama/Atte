@@ -14,7 +14,7 @@ class WorktimeController extends Controller
         $user = Auth::user();
 
         $todayWorkStart = Work_time::where('user_id', $user->id)
-            ->whereDate('start_time', Carbon::today())
+            ->whereDate('date', Carbon::today())
             ->exists();
 
         return view('stamp', compact('todayWorkStart'));
@@ -26,7 +26,7 @@ class WorktimeController extends Controller
 
         // 今日の出勤状態を確認
         $todayWorkStart = Work_time::where('user_id', $user->id)
-            ->whereDate('start_time', Carbon::today())
+            ->whereDate('date', Carbon::today())
             ->exists();
 
         if ($todayWorkStart) {
