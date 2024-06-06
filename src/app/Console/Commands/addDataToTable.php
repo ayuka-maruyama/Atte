@@ -9,23 +9,21 @@ use Carbon\Carbon;
 class addDataToTable extends Command
 {
     // コマンドの名前と説明を設定
-    protected $signature = 'add:data-to-table';
-    protected $description = 'Add data to a specific table at a scheduled time';
+    protected $signature = 'auto:update-times';
+    protected $description = 'Automatically update end_time to 23:59:59 and start_time to 0:00:00 for users who did not set their own end_time';
 
     // コマンドの処理を実装 
-    public function addEndtime()
+    public function handle()
     {
-        // 対象者の検索
-        $use_id = $this->argument('user_id');
-
         // 更新する時間を指定
-        $addEndTime = Carbon::today()->setTime(23, 59, 59);
+        $endTime = Carbon::today()->setTime(23, 59, 59);
+        $startTime = Carbon::tomorrow()->setTime(0, 0, 0);
 
         // end_timeがNULLのユーザーすべてのend_timeカラムを更新する
         DB::table('work_times')
             ->whereNull('end_time')
-            ->update(['end_time' => $addEndTime]);
+            ->update(['end_time' => $endTime, 'start_time' => $startTime]);
 
-        $this->info('end time updated successfully for all users without an end_time.');
+        $this->info('End time and start time updated successfully for all users without an end_time.');
     }
 }
