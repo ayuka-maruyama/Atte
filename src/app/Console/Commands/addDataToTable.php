@@ -31,9 +31,6 @@ class addDataToTable extends Command
         }
 
         foreach ($usersWithoutEndTime as $workTime) {
-            // デバッグのためのログ出力
-            \Log::info('Updating work time for user', ['user_id' => $workTime->user_id]);
-
             // 今日の退勤時間を更新
             $workTime->end_time = Carbon::today()->setTime(23, 59, 59);
             $workTime->save();
