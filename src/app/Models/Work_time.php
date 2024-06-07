@@ -10,7 +10,7 @@ class Work_time extends Model
     use HasFactory;
 
     protected $table = 'work_times';
-    protected $fillable = ['user_id', 'date', 'start_time'];
+    protected $fillable = ['user_id', 'date', 'start_time', 'end_time'];
     protected $dates = ['created_at', 'updated_at'];
 
     /**

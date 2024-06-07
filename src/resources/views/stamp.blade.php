@@ -45,7 +45,7 @@
                     勤務開始
                 </button>
             </form>
-            <form class="stamp__form" action="" method="post">
+            <form class="stamp__form" action="{{ route('endtime') }}" method="post">
                 @csrf
                 <button class="end__button" type="submit">勤務終了</button>
             </form>
@@ -58,7 +58,6 @@
             <form class="stamp__form" action="" method="post">
                 @csrf
                 <button type="submit" class="break-end__button button @if ($todayWorkStart ?? '' ) disabled @endif" @if ($todayWorkStart ?? '' ) disabled @endif>休憩終了</button>
-            </form>
             </form>
         </div>
     </div>
