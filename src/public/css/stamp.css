@@ -46,6 +46,8 @@
 
 /* 出勤ボタンが押されたときの制御 */
 .start__button.disabled,
+.end__button.disabled,
+.break_start__button.disabled,
 .break-end__button.disabled {
     color: #c7c5c5;
     cursor: not-allowed;

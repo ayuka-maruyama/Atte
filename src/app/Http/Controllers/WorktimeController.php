@@ -18,7 +18,11 @@ class WorktimeController extends Controller
             ->whereDate('date', Carbon::today())
             ->exists();
 
-        return view('stamp', compact('todayWorkStart'));
+        $todayWorkEnd = Work_time::where('user_id', $user->id)
+            ->whereDate('date', Carbon::today())
+            ->whereNotNull('end_time')
+            ->exists();
+        return view('stamp', compact('todayWorkStart', 'todayWorkEnd'));
     }
 
     public function startWork(Request $request)
