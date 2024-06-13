@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use App\Models\Work_time;
+use App\Models\Break_time;
 use Illuminate\Support\Facades\Log;
 
 class WorktimeController extends Controller
@@ -14,15 +15,27 @@ class WorktimeController extends Controller
     {
         $user = Auth::user();
 
-        $todayWorkStart = Work_time::where('user_id', $user->id)
+        $workStart = Work_time::where('user_id', $user->id)
             ->whereDate('date', Carbon::today())
-            ->exists();
+            ->first();
 
-        $todayWorkEnd = Work_time::where('user_id', $user->id)
+        $workEnd = Work_time::where('user_id', $user->id)
             ->whereDate('date', Carbon::today())
             ->whereNotNull('end_time')
-            ->exists();
-        return view('stamp', compact('todayWorkStart', 'todayWorkEnd'));
+            ->first();
+
+        $breakStart = Break_time::where('work_time_id', $workStart->id ?? null)
+            ->orderBy('break_start_time', 'desc')
+            ->pluck('break_start_time')
+            ->first();
+
+        $breakEnd = Break_time::where('work_time_id', $workStart->id ?? null)
+            ->whereNotNull('break_start_time')
+            ->orderBy('break_start_time', 'desc')
+            ->pluck('break_end_time')
+            ->first();
+
+        return view('stamp', compact('workStart', 'workEnd', 'breakStart', 'breakEnd'));
     }
 
     public function startWork(Request $request)
@@ -30,12 +43,12 @@ class WorktimeController extends Controller
         $user = Auth::user();
 
         // 今日の出勤状態を確認
-        $todayWorkStart = Work_time::where('user_id', $user->id)
+        $workStart = Work_time::where('user_id', $user->id)
             ->whereDate('date', Carbon::today())
             ->exists();
 
-        if ($todayWorkStart) {
-            return redirect()->route('starttime')->with('flash_message', 'すでに出勤処理済みです');
+        if ($workStart) {
+            return redirect()->route('starttime');
         }
 
         // 新しい出勤打刻を作成
@@ -61,7 +74,7 @@ class WorktimeController extends Controller
                 'user_id' => $user->id,
                 'todayWorkRecord' => $todayWorkRecord,
             ]);
-            return redirect()->route('endtime')->with('flash_message', 'すでに退勤処理済みです');
+            return redirect()->route('endtime');
         }
 
         // 既存の出勤打刻を更新

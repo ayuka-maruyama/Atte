@@ -30,7 +30,7 @@
             <?php $user = Auth::user(); ?>{{ $user->name }} さんお疲れ様です！
         </h2>
 
-        <!-- フラッシュメッセージ。ボタン反転実装されたら削除する -->
+        <!-- フラッシュメッセージ。 -->
         @if(session('flash_message'))
         <div class="flash_message">
             {{ session('flash_message') }}
@@ -41,31 +41,33 @@
         <div class="stamp__area-top">
             <form class="stamp__form" action="{{ route('starttime') }}" method="post">
                 @csrf
-                <button type="submit" class="start__button button @if ($todayWorkStart ?? '') disabled @endif" @if ($todayWorkStart ?? '' ) disabled @endif>
+                <button type="submit" class="start__button button @if ($workStart) disabled @endif" @if ($workStart) disabled @endif>
                     勤務開始
                 </button>
             </form>
             <form class="stamp__form" action="{{ route('endtime') }}" method="post">
                 @csrf
-                <button type="submit" class="end__button button @if ($todayWorkEnd ?? '') disabled @endif" @if ($todayWorkEnd ?? '' ) disabled @endif>
+                <button type="submit" class="end__button button @if (!$workStart || $workEnd || ($breakStart && !$breakEnd)) disabled @endif" @if (!$workStart || $workEnd || ($breakStart && !$breakEnd)) disabled @endif>
                     勤務終了
                 </button>
             </form>
         </div>
         <div class="stamp__area-bottom">
-            <form class="stamp__form" action="{{ route('breakStart') }}" method="post">
+            <form class="stamp__form" action="{{ route('breakStart') }}" method="POST">
                 @csrf
-                <button type="submit" class="break_start__button button @if ($todayWorkEnd ?? '') disabled @endif" @if ($todayWorkEnd ?? '' ) disabled @endif>
+                <button type="submit" class="break_start__button button @if (!$workStart || $workEnd || ($breakStart && !$breakEnd)) disabled @endif" @if (!$workStart || $workEnd || ($breakStart && !$breakEnd)) disabled @endif>
                     休憩開始
                 </button>
             </form>
-            <form class="stamp__form" action="" method="post">
+
+            <form class="stamp__form" action="{{ route('breakEnd') }}" method="POST">
                 @csrf
-                <button type="submit" class="break-end__button button @if ($todayWorkEnd ?? '') disabled @endif" @if ($todayWorkEnd ?? '' ) disabled @endif>
+                <button type="submit" class="break-end__button button @if (!$workStart || !$breakStart || $workEnd || ($breakStart && $breakEnd)) || ($breakStart && !$breakEnd)) disabled @endif" @if (!$workStart || !$breakStart || $workEnd || ($breakStart && $breakEnd)) || ($breakStart && !$breakEnd)) disabled @endif>
                     休憩終了
                 </button>
             </form>
         </div>
     </div>
+</div>
 </div>
 @endsection
