@@ -32,7 +32,7 @@ class BreaktimeController extends Controller
         $user = Auth::user();
 
         $todayWorkRecord = Work_time::where('user_id', $user->id)
-            ->whereDate('date', now()->toDateString())
+            ->whereDate('date', Carbon::today())
             ->first();
 
         $breakTimeRecords = Break_time::where('work_time_id', $todayWorkRecord->id)
