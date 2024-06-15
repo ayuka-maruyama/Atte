@@ -17,8 +17,8 @@ class Break_time extends Model
      * User関連付け
      * 1対多
      */
-    public function user()
+    public function work_time()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(Work_time::class);
     }
 }
