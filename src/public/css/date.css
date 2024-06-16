@@ -1,12 +1,29 @@
-.date {
+.attendance {
     width: 90vw;
     margin: 0 auto;
 }
 
-.date__title {
+.date {
+    display: flex;
     font-size: 22px;
     text-align: center;
-    padding: 30px 0 40px;
+    padding: 40px 0 40px;
+    justify-content:  center;
+}
+
+.date__title {
+    padding: 5px;
+    margin: 0 10px;
+
+}
+
+.date__title-before,
+.date__title-after {
+    border: 1px solid #0000ff;
+    color: #0000ff;
+    padding: 5px;
+    margin: 0 10px;
+    background: #FFFFFF;
 }
 
 .work-time {
@@ -20,7 +37,6 @@
 .table__row {
     height: 10vh;
     border-bottom: 1px solid #b0afaf;
-margin: 15px;
 }
 
 .table__row:last-child {
@@ -29,7 +45,7 @@ margin: 15px;
 
 .work-time__title,
 .work-time__item {
-    padding: 25px;
+    padding: 25px 40px;
     vertical-align: middle;
     font-weight: 600;
 }
