@@ -49,7 +49,7 @@
             </tr>
             @endforeach
         </table>
-        {{ $workRecords->links('vendor/pagination/custom') }}
+        {{ $workRecords->appends(['date' => $date])->links('vendor/pagination/custom') }}
     </div>
 </div>
 @endsection
