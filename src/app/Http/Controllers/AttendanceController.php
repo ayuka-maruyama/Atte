@@ -13,6 +13,10 @@ class AttendanceController extends Controller
     public function attendance(Request $request)
     {
         $date = $request->input('date', Carbon::yesterday()->format("Y-m-d"));
+        $dateCarbon = Carbon::createFromFormat('Y-m-d', $date);
+
+        $previousDate = $dateCarbon->copy()->subDay()->format('Y-m-d');
+        $nextDate = $dateCarbon->copy()->addDay()->format('Y-m-d');
 
         $workRecords = Work_time::where('date', $date)
             ->with('user')
@@ -62,6 +66,6 @@ class AttendanceController extends Controller
             $breakTimesByWorkId[$workTimeId] = gmdate("H:i:s", $breakTimeInSeconds);
         }
 
-        return view('date', compact('date', 'workRecords', 'breakTimesByWorkId', 'pureWorkTimes'));
+        return view('date', compact('date', 'previousDate', 'nextDate', 'workRecords', 'breakTimesByWorkId', 'pureWorkTimes'));
     }
 }

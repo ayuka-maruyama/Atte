@@ -26,10 +26,9 @@
 @section('content')
 <div class="attendance">
     <div class="date">
-        <!-- 前日、翌日の動作はまだ記述していない -->
-        <a href="" class="date__title-before">&lt;</a>
+        <a href="{{ route('attendance', ['date' => $previousDate]) }}" class="date__title-before">&lt;</a>
         <h3 class="date__title">{{ $date }}</h3>
-        <a href="" class="date__title-after">&gt;</a>
+        <a href="{{ route('attendance', ['date' => $nextDate]) }}" class="date__title-after">&gt;</a>
     </div>
     <div class="work-time">
         <table class="work-time__table">
