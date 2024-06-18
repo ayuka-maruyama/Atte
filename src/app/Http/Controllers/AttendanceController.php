@@ -12,7 +12,7 @@ class AttendanceController extends Controller
 {
     public function attendance(Request $request)
     {
-        $date = $request->input('date', Carbon::today()->format("Y-m-d"));
+        $date = $request->input('date', Carbon::yesterday()->format("Y-m-d"));
 
         $workRecords = Work_time::where('date', $date)
             ->with('user')

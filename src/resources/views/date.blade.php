@@ -50,7 +50,7 @@
             </tr>
             @endforeach
         </table>
-        {{ $workRecords->links() }}
+        {{ $workRecords->links('vendor/pagination/custom') }}
     </div>
 </div>
 @endsection

@@ -45,3 +45,39 @@
 .footer__tag {
     font-weight: bold;
 }
+
+/* ページネーション */
+.pagination {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    font-size: 18px;
+}
+
+.pagination li:not(.active) {
+    border: 1px solid #FFFFFF;
+    padding: 4px 12px;
+    margin: 0 2px;
+    background: #FFFFFF;
+    color: #5959e4;
+}
+
+.pagination li:not(:last-child) {
+    border-right: none;
+}
+
+.pagination a {
+    color: #5959e4;
+    text-decoration: none;
+}
+
+.pagination__link {
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.active {
+    padding: 4px 12px;
+    background: #5959e4;
+    color: #FFFFFF;
+}
