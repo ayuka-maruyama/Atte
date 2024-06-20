@@ -2,15 +2,19 @@
 企業の勤怠管理システム  
 ![スクリーンショット 2024-06-19 141636](https://github.com/ayuka-maruyama/Atte/assets/155651611/86686fdd-fbbe-4d98-8105-684f6dc3ba17)  
   
+
 ## 作成した目的
 勤怠管理システムを利用して人事評価を行うため  
   
+
 ## アプリケーションURL  
 追加実装が完了してから記述する  
   
+
 ## 他のリポジトリ
 追加実装が完了してから記述する  
   
+
 ## 機能一覧
 *会員登録機能 
 *ログイン機能  
@@ -23,15 +27,19 @@
 *ページネーション機能  
 *追加機能実装が完了すれば追加する  
   
+
 ## 使用技術（実行環境）  
 Laravel Framework 8.83.8  
   
+
 ## テーブル設計  
 ![スクリーンショット 2024-06-19 150716](https://github.com/ayuka-maruyama/Atte/assets/155651611/47818cae-9358-496e-9bd1-a84d13ed342c)  
   
+
 ## ER図  
 ![スクリーンショット 2024-06-19 151201](https://github.com/ayuka-maruyama/Atte/assets/155651611/e8ab0c04-b5da-4e92-9fd6-e735de944f66)
   
+
 # 環境構築  
 **Dockerビルド**
 1.`git clone https://github.com/ayuka-maruyama/Atte.git`  
@@ -66,8 +74,6 @@ php artisan migrate
 php artisan db:seed
 ```  
   
+  
 ## その他
 テストユーザー  
-名前　テスト　太郎  
-メールアドレス　test@example.com  
-パスワード　arashi1103  
