@@ -14,6 +14,9 @@ class WorktimesTableSeeder extends Seeder
      */
     public function run()
     {
-        Work_time::factory()->count(200)->create();
+        Work_time::factory()
+            ->count(200)
+            ->withBreaks()
+            ->create();
     }
 }

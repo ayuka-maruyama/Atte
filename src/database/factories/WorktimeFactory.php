@@ -12,20 +12,16 @@ class WorktimeFactory extends Factory
 
     public function definition()
     {
-        // 今日の前後1週間の日付を生成
         $start = Carbon::today()->subDays(7);
         $end = Carbon::today()->addDays(7);
         $randomDate = Carbon::createFromTimestamp(rand($start->timestamp, $end->timestamp))->toDateString();
 
-        // 開始時間を生成
         $startTime = $this->faker->time();
 
-        // 終了時間を開始時間よりも遅く設定するためのロジック
         $startDateTime = Carbon::createFromFormat('H:i:s', $startTime);
         $endDateTime = (clone $startDateTime)->addMinutes(rand(1, 480)); // 開始時間から1分から480分後（8時間後）までの間で終了時間を設定
         $endTime = $endDateTime->format('H:i:s');
 
-        // created_atとupdated_atを生成
         $createdAt = Carbon::createFromFormat('Y-m-d H:i:s', $randomDate . ' ' . $startTime);
         $updatedAt = Carbon::createFromFormat('Y-m-d H:i:s', $randomDate . ' ' . $endTime);
 
@@ -37,5 +33,19 @@ class WorktimeFactory extends Factory
             'created_at' => $createdAt,
             'updated_at' => $updatedAt,
         ];
+    }
+
+    public function withBreaks()
+    {
+        return $this->afterCreating(function (Work_time $workTime) {
+            $breakCount = rand(0, 2);
+            \App\Models\Break_time::factory()
+                ->count($breakCount)
+                ->create([
+                    'work_time_id' => $workTime->id,
+                    'work_start_time' => $workTime->start_time,
+                    'work_end_time' => $workTime->end_time
+                ]);
+        });
     }
 }
