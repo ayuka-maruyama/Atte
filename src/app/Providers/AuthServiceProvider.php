@@ -4,6 +4,9 @@ namespace App\Providers;
 
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Auth\Notifications\VerifyEmail;
+use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
+use Illuminate\Support\Facades\Auth;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -23,8 +26,17 @@ class AuthServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->registerPolicies();
+        // メール認証の設定
+        VerifyEmail::toMailUsing(function ($notifiable, $url) {
+            return (new \Illuminate\Notifications\Messages\MailMessage)
+                ->subject('Confirm your email')
+                ->line('Please click the button below to verify your email address.')
+                ->action('Verify Email', $url);
+        });
 
-        //
+        // メール認証リンクの有効期限を変更
+        VerifyEmail::createUrlUsing(function ($notifiable) {
+            return url("/email/verify/{$notifiable->getKey()}/" . urlencode($notifiable->getEmailForVerification()));
+        });
     }
 }
