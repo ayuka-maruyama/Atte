@@ -27,6 +27,6 @@ class RegisteredUserController extends Controller
 
         event(new Registered($user));
 
-        return redirect('/login')->with('status', 'Verification link sent to your email');
+        return redirect('/confirm')->with('status', 'Verification link sent to your email');
     }
 }
