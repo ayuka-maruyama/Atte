@@ -12,7 +12,11 @@ Route::post('/register', [RegisteredUserController::class, 'store']);
 
 Route::get('/login', function () {
     return view('auth.login');
-});
+})->name('login');
+
+Route::get('/confirm', function () {
+    return view('confirm');
+})->name('confirm');
 
 Route::post('/login', [AuthenticatedSessionController::class, 'store']);
 Route::post('/logout', [AuthenticatedSessionController::class, 'destroy']);
