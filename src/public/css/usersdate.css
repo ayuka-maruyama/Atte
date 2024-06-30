@@ -1,0 +1,51 @@
+.users {
+    width: 60vw;
+    margin: 0 auto;
+}
+
+.all-date__header {
+    display: flex;
+    font-size: 22px;
+    text-align: center;
+    padding: 40px 0 40px;
+    justify-content:  center;
+}
+
+.all-date__main {
+    border-top: 1px solid #b0afaf;
+}
+
+.all-date__table {
+    width: 100%;
+}
+
+.table__row {
+    height: 10vh;
+    border-bottom: 1px solid #b0afaf;
+    margin: 0 auto;
+}
+
+.table__row:last-child {
+    border: none;
+    margin-bottom: 15px;
+}
+
+.work-time__title,
+.work-time__item {
+    width: 50vw;
+    vertical-align: middle;
+    font-weight: 600;
+    text-align: center;
+
+}
+
+.work-time__button {
+    width: 30%;
+    border: 1px solid #636262;
+    color: #FFFFFF;
+    padding: 5px;
+    margin: 0;
+    background: #636262;
+    border-radius: 5px;
+    text-align: center;
+}
