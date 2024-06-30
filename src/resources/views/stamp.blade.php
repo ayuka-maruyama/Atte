@@ -14,7 +14,7 @@
             <a href="/attendance" class="header__link">日付一覧</a>
         </li>
         <li class="header__nav-item">
-            <a href="/user" class="header__link">ユーザー一覧</a>
+            <a href="/users" class="header__link">ユーザー一覧</a>
         </li>
         <li class="header__nav-item">
             <form class="header__logout" action="/logout" method="post">
