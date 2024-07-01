@@ -1,0 +1,41 @@
+.user-details {
+    max-width: 90vw;
+    margin: 0 auto;
+}
+
+.user-details__header {
+    display: flex;
+    font-size: 22px;
+    text-align: center;
+    padding: 40px 0 40px;
+    justify-content:  center;
+}
+
+.user-details__title {
+    padding: 5px;
+    margin: 0 10px;
+}
+
+.user-details__main {
+    border-top: 1px solid #b0afaf;
+}
+
+.user-details__table {
+    width: 100%;
+}
+
+.table__row {
+    height: 10vh;
+    border-bottom: 1px solid #b0afaf;
+}
+
+.table__row:last-child {
+    border: none;
+}
+
+.work-time__title,
+.work-time__item {
+    padding: 25px 40px;
+    vertical-align: middle;
+    font-weight: 600;
+}

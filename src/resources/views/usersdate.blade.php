@@ -41,11 +41,10 @@
             <tr class="table__row">
                 <td class="work-time__item">{{ $user->name }}</td>
                 <td class="work-time__item">
-                    <button class="work-time__button">
-                        <a href="/worktime" class="link">
-                            勤怠一覧
-                        </a>
-                    </button>
+                    <form action="{{ route('userWorkTime') }}" method="get">
+                        <input type="hidden" name="user_id" value="{{ $user->id }}">
+                        <button class="work-time__button" type="submit">勤怠一覧</button>
+                    </form>
                 </td>
             </tr>
             @endforeach

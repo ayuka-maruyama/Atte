@@ -30,4 +30,5 @@ Route::middleware('auth')->group(function () {
     Route::post('/breakend', [BreaktimeController::class, 'breakEnd'])->name('breakEnd');
     Route::get('/attendance', [AttendanceController::class, 'attendance'])->name('attendance');
     Route::get('/users', [UserdateController::class, 'open'])->name('usersdate');
+    Route::get('/worktime', [UserdateController::class, 'details'])->name('userWorkTime');
 });
