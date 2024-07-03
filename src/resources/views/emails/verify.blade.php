@@ -8,8 +8,8 @@
 
 <style>
     body {
-        border: 1px double red;
-        max-width: 80vw;
+        border: 6px double red;
+        max-width: 70vw;
         margin: 0 auto;
         text-align: center;
     }
@@ -26,8 +26,8 @@
         font-size: 18px;
         color: #FFFFFF;
         text-decoration: none;
-        margin: 30px;
-        width: 30vh;
+        margin: 0 auto;
+        width: 30vw;
     }
 
     .small-message_p {
