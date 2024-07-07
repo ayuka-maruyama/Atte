@@ -21,7 +21,9 @@ class UserdateController extends Controller
     {
         $userId = $request->input('user_id');
         $user = User::findOrFail($userId); // 選んだ対象者のIDを検索して表示する
-        $worktimes = Work_Time::where('user_id', $userId)->paginate(5);; // ユーザーIDと一致するデータをすべて取得
+        $worktimes = Work_Time::where('user_id', $userId)
+            ->orderBy('date', 'desc')
+            ->paginate(5);; // ユーザーIDと一致するデータをすべて取得
 
         if ($worktimes->isEmpty()) {
             // worktimes が空の場合の処理

@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use App\Models\Work_time;
 
-class WorktimesTableSeeder extends Seeder
+class Work_timeTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,7 +15,7 @@ class WorktimesTableSeeder extends Seeder
     public function run()
     {
         Work_time::factory()
-            ->count(200)
+            ->count(500)
             ->withBreaks()
             ->create();
     }
