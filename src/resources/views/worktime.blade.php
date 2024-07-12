@@ -40,7 +40,7 @@
                 <th class="work-time__title">休憩時間</th>
                 <th class="work-time__title">実働時間</th>
             </tr>
-            @if($worktimes->isNotEmpty())
+            @if(isset($worktimes) && $worktimes->isNotEmpty())
             @foreach($worktimes as $worktime)
             <tr class="table__row">
                 <td class="work-time__item">{{ $worktime->date }}</td>
@@ -56,7 +56,9 @@
             </tr>
             @endif
         </table>
+        @if(isset($worktimes))
         {{ $worktimes->appends(['user_id' => $userId])->links() }}
+        @endif
     </div>
 </div>
 @endsection
