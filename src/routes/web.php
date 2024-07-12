@@ -6,18 +6,24 @@ use App\Http\Controllers\WorktimeController;
 use App\Http\Controllers\BreaktimeController;
 use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\UserdateController;
+use App\Http\Controllers\VerifyEmailController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/register', [RegisteredUserController::class, 'create']);
 Route::post('/register', [RegisteredUserController::class, 'store']);
 
+Route::get('/verify', function () {
+    return view('auth.verify-email');
+})->name('verify');
+
+Route::middleware(['signed', 'throttle:6,1'])->group(function () {
+    Route::get('/email/verify/{id}/{hash}', [VerifyEmailController::class, '__invoke'])->name('verification.verify');
+    Route::get('/', [WorktimeController::class, 'todayWorkStart'])->name('todayWorkStart');
+});
+
 Route::get('/login', function () {
     return view('auth.login');
 })->name('login');
-
-Route::get('/confirm', function () {
-    return view('confirm');
-})->name('confirm');
 
 Route::post('/login', [AuthenticatedSessionController::class, 'store']);
 Route::post('/logout', [AuthenticatedSessionController::class, 'destroy']);

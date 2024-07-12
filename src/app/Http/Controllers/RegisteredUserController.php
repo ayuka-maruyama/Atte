@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Auth\Events\Registered;
 use App\Http\Requests\RegisterRequest;
 use App\Models\User; // Userモデルを利用するためのuseステートメント
@@ -27,6 +28,6 @@ class RegisteredUserController extends Controller
 
         event(new Registered($user));
 
-        return redirect('/confirm')->with('status', 'Verification link sent to your email');
+        return redirect('/verify')->with('status', 'Verification link sent to your email');
     }
 }
