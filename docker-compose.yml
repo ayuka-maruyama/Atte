@@ -14,11 +14,13 @@ services:
       - ./src:/var/www/
     depends_on:
       - php
+    restart: always
 
   php:
     build: ./docker/php
     volumes:
       - ./src:/var/www/
+    restart: always
 
   mysql:
     image: mysql:8.0.26
@@ -32,6 +34,7 @@ services:
     volumes:
       - ./docker/mysql/data:/var/lib/mysql
       - ./docker/mysql/my.cnf:/etc/mysql/conf.d/my.cnf
+    restart: always
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
@@ -44,6 +47,8 @@ services:
       - mysql
     ports:
       - 8080:80
+    restart: always
+
   mail:
     image: mailhog/mailhog
     container_name: mailhog
@@ -54,3 +59,4 @@ services:
       MH_MAILDIR_PATH: /tmp
     volumes:
       - maildir:/tmp
+    restart: always
