@@ -12,9 +12,10 @@ RUN curl -sS https://getcomposer.org/installer | php \
 
 COPY crontab /etc/cron.d/laravel-cron
 
-RUN chmod 0644 /etc/cron.d/laravel-cron \
-  && crontab /etc/cron.d/laravel-cron
-
+RUN echo '* * * * * root /usr/local/bin/php /var/www/html/artisan schedule:run >> /proc/1/fd/1 2>&1' > /etc/cron.d/laravel-cron \
+    && chmod 0644 /etc/cron.d/laravel-cron \
+    && crontab /etc/cron.d/laravel-cron
+    
 CMD ["sh", "-c", "cron && php-fpm"]
 
 WORKDIR /var/www
