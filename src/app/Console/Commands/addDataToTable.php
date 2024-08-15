@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Console\Commands;
+namespace app\Console\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 use App\Models\Work_time;
 
-class AddDataToTable extends Command
+class addDataToTable extends Command
 {
     // コマンドの名前と説明を設定
     protected $signature = 'auto:update-times {date?}';
