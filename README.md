@@ -80,7 +80,13 @@ php artisan migrate
 php artisan db:seed
 ```  
   
-  
+## タスクスケジューラーの設定  
+1.`docker-compose exec php bash`でPHPコンテナへログイン  
+2.`crontab -e`  
+3.`* * * * * /usr/local/bin/php /var/www/artisan schedule:run >> /var/www/storage/logs/laravel.log 2>&1`を入力  
+4.`php artisan schedule:list`で設定したタスクスケジューラーの内容が反映されているか確認  
+実施時間の設定は、src/app/Console/Kernel.phpに記述あり  
+
 ## その他
 テストユーザー  
 メールアドレス test@example.com  
